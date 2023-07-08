@@ -71,3 +71,9 @@ class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Dish
     success_url = reverse_lazy("kitchen:dish-list")
     form_class = DishForm
+
+
+class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Dish
+    template_name = "kitchen/dish_confirm_delete.html"
+    success_url = reverse_lazy("kitchen:dish-list")

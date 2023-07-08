@@ -10,7 +10,8 @@
         <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-success">
         Update
         </a>
-        <a href="#" class="btn btn-danger">
+
+        <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger">
         Delete
         </a>
       </div>
