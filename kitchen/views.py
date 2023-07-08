@@ -49,3 +49,9 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Cook
     template_name = "kitchen/cook_confirm_delete.html"
     success_url = reverse_lazy("kitchen:cook-list")
+
+
+class DishListView(LoginRequiredMixin, generic.ListView):
+    model = Dish
+    queryset = Dish.objects.all().select_related("dish_type")
+    paginate_by = 4
