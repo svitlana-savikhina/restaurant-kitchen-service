@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from kitchen.models import Cook, DishType, Dish
-from kitchen.forms import CookCreateForm, CookUpdateForm
+from kitchen.forms import CookCreateForm, CookUpdateForm, DishForm
 
 
 def index(request):
@@ -59,3 +59,5 @@ class DishListView(LoginRequiredMixin, generic.ListView):
 
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
     model = Dish
+
+
