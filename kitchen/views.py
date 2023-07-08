@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 
 from kitchen.models import Cook, DishType, Dish
