@@ -61,3 +61,7 @@ class DishDetailView(LoginRequiredMixin, generic.DetailView):
     model = Dish
 
 
+class DishCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Dish
+    success_url = reverse_lazy("kitchen:dish-list")
+    form_class = DishForm
