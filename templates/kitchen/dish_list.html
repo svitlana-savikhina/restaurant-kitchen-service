@@ -2,15 +2,22 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-
-  <div class="container text-center  mt-7">
-    <h1>Dish List</h1>
-    <div class="container">
-
-      <a href="{% url 'kitchen:dish-create' %}" class="btn btn-success">
+  <h1>
+    Dish List
+    <a href="{% url 'kitchen:dish-create' %}" class="btn btn-success">
       Create
-      </a>
-    </div>
+    </a>
+  </h1>
+  <br>
+  <div class="row align-items-center">
+    <form action="" method="get" class="d-flex">
+      <div class="col-8">
+        {{ search_form | crispy }}
+      </div>
+      <div>
+        <input class="btn btn-dark" type="submit" value="Search">
+      </div>
+      </form>
   </div>
   <br>
   <div class="container">
