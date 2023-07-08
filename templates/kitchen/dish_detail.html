@@ -40,6 +40,19 @@
         </tr>
   {% endfor %}
     </table>
+     <br>
+     {% if user in dish.cooks.all %}
+  <form action="{% url 'kitchen:cook-assigning' pk=dish.id %}" method="post">
+  {% csrf_token %}
+  <input type="submit" value=" Delete me from this dish" class="btn btn-danger">
+  </form>
+
+  {% else %}
+ <form action="{% url 'kitchen:cook-assigning' pk=dish.id %}" method="post">
+  {% csrf_token %}
+  <input type="submit" value="Assign me to this dish" class="btn btn-success">
+  </form>
+  {% endif %}
      </div>
    </div>
 
