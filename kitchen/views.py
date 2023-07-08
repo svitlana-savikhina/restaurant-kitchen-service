@@ -55,3 +55,7 @@ class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     queryset = Dish.objects.all().select_related("dish_type")
     paginate_by = 4
+
+
+class DishDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Dish

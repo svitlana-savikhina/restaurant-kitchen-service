@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+   <div class="container mt-7">
+    <h1>{{ dish.name }}</h1>
+      <h2>({{ dish.dish_type.name }})</h2>
+   <br>
+      <div>
+        <a href="#" class="btn btn-success">
+        Update
+        </a>
+        <a href="#" class="btn btn-danger">
+        Delete
+        </a>
+      </div>
+  <br>
+
+     <h4>Description:</h4>
+    {{ dish.description }}
+   <br>
+   <br>
+
+     <div class="ml-3">
+       <h4>Cooks:</h4>
+      <table class="table">
+      <tr>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Years of experience</th>
+      </tr>
+      {% for cook_ in dish.cooks.all %}
+        <tr>
+          <td>{{ cook_.username }}</td>
+          <td>{{ cook_.first_name }}</td>
+          <td>{{ cook_.last_name }}</td>
+          <td>{{ cook_.years_of_experience }}</td>
+        </tr>
+  {% endfor %}
+    </table>
+     </div>
+   </div>
+
+{% endblock %}
