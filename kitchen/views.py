@@ -23,3 +23,6 @@ def index(request):
     return render(request, "kitchen/index.html", context=context)
 
 
+class CookListView(LoginRequiredMixin, generic.ListView):
+    model = Cook
+    paginate_by = 4
