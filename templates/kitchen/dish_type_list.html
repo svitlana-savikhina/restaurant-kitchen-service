@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="container text-center  mt-7">
+    <h1>Dish type List</h1>
+      <div class="container">
+        <a href="#" class="btn btn-success">
+            Create
+          </a>
+      </div>
+  <br>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+
+      {% if dish_type_list %}
+        <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+        {% for type in dish_type_list %}
+          <tr>
+            <td>{{ type.id }}</td>
+            <td>{{ type.name }}</td>
+            <td><a href="#">Update</a></td>
+            <td><a href="#">Delete</a></td>
+          </tr>
+        {% endfor %}
+        </table>
+        </div>
+        </div>
+      {% else %}
+        <p>There are no dish types in restaurant</p>
+      {% endif %}
+{% endblock %}
