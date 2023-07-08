@@ -1,4 +1,6 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.views import generic
 
 from kitchen.models import Cook, DishType, Dish
 
@@ -19,3 +21,5 @@ def index(request):
     }
 
     return render(request, "kitchen/index.html", context=context)
+
+
