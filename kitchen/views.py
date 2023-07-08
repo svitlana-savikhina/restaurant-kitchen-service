@@ -26,3 +26,7 @@ def index(request):
 class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
     paginate_by = 4
+
+
+class CookDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Cook
