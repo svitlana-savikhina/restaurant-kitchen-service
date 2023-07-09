@@ -1,64 +1,59 @@
 {% extends "base-fullscreen.html" %}
 {% load crispy_forms_filters %}
 
-
-
 {% block content %}
   {% include "includes/navigation.html" %}
-
-<div class="container text-center  mt-7">
-  <h1>Cook List</h1>
-  <div class="container" style="display: flex; align-items: center; flex-direction: column;">
-    <h5 style="flex-grow: 1;">You can create a new cook</h5>
-  <a href="{% url 'kitchen:cook-create' %}" class="btn btn-success">
-      Create
-  </a>
-  </div>
-</div>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-6">
-      <form action="" method="get" class="row g-3 align-items-center">
-        <div class="col-8">
-          {{ search_form | crispy }}
-           <style>
-    input:focus {
-        border-color: darkgreen !important;
-        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
-    }
-    </style>
-        </div>
-        <div class="col-4">
-          <input class="btn btn-dark" type="submit" value="Search">
-        </div>
-      </form>
+  <div class="container text-center  mt-7">
+    <h1>Cook List</h1>
+    <div class="container" style="display: flex; align-items: center; flex-direction: column;">
+      <h5 style="flex-grow: 1;">You can create a new cook</h5>
+      <a href="{% url 'kitchen:cook-create' %}" class="btn btn-success">
+        Create
+      </a>
     </div>
   </div>
-</div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form action="" method="get" class="row g-3 align-items-center">
+          <div class="col-8">
+            {{ search_form | crispy }}
+            <style>
+                input:focus {
+                    border-color: darkgreen !important;
+                    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+                }
+            </style>
+          </div>
+          <div class="col-4">
+            <input class="btn btn-dark" type="submit" value="Search">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <br>
-{% if cook_list %}
-
-  <table class="table table-bordered table-striped text-center table-hover" style="width: 60%;  margin: 0 auto;">
-  <tr style="background-color: seagreen">
-
-    <th>ID</th>
-    <th>Username</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Years of experience</th>
-  </tr>
-  {% for cook in cook_list %}
-  <tr>
-
-    <td>{{ cook.id }}</td>
-    <td><a href="{{ cook.get_absolute_url }}" style="color: black;">{{ cook.username }} {% if user == cook %}(Me) {% endif %}</a></td>
-    <td>{{ cook.first_name }}</td>
-    <td>{{ cook.last_name }}</td>
-    <td>{{ cook.years_of_experience }}</td>
-  </tr>
-{% endfor %}
-</table>
-{% else %}
-<p>There are no cooks in this service</p>
-{% endif %}
+  {% if cook_list %}
+    <table class="table table-bordered table-striped text-center table-hover" style="width: 60%;  margin: 0 auto;">
+      <tr style="background-color: seagreen">
+        <th>ID</th>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Years of experience</th>
+      </tr>
+      {% for cook in cook_list %}
+        <tr>
+          <td>{{ cook.id }}</td>
+          <td><a href="{{ cook.get_absolute_url }}" style="color: black;">{{ cook.username }} {% if user == cook %}(Me) {% endif %}</a></td>
+          <td>{{ cook.first_name }}</td>
+          <td>{{ cook.last_name }}</td>
+        <td>{{ cook.years_of_experience }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>There are no cooks in this service</p>
+  {% endif %}
 {% endblock %}
+
