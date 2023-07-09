@@ -1,67 +1,59 @@
-{% extends "base.html" %}
+{% extends "base-fullscreen.html" %}
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
-    Dish List
-    <a href="{% url 'kitchen:dish-create' %}" class="btn btn-success">
-      Create
-    </a>
-  </h1>
-  <br>
-  <div class="row align-items-center">
-    <form action="" method="get" class="d-flex">
-      <div class="col-8">
-        {{ search_form | crispy }}
-      </div>
-      <div>
-        <input class="btn btn-dark" type="submit" value="Search">
-      </div>
-      </form>
+  {% include "includes/navigation.html" %}
+  <div class="container text-center  mt-7">
+    <h1>Dish List</h1>
+    <div class="container" style="display: flex; align-items: center; flex-direction: column;">
+      <h5 style="flex-grow: 1;">You can create a new dish</h5>
+      <a href="{% url 'kitchen:dish-create' %}" class="btn btn-success">
+        Create
+      </a>
+    </div>
   </div>
-  <br>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6">
-
+        <form action="" method="get" class="row g-3 align-items-center">
+          <div class="col-8">
+            {{ search_form | crispy }}
+            <style>
+                input:focus {
+                    border-color: darkgreen !important;
+                    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+                }
+            </style>
+          </div>
+          <div class="col-4">
+            <input class="btn btn-dark" type="submit" value="search">
+          </div>
+        </form>
        </div>
-  {% if dish_list %}
-    <table class="table">
-  <tr>
-
-    <th >ID</th>
-    <th>Name</th>
-    <th>Dish type</th>
-    <th>Price</th>
-    <th>Description</th>
-
-  </tr>
-  {% for dish in dish_list %}
-  <tr>
-
-    <td>
-      {{ dish.id }}
-    </td>
-    <td>
-      <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
-    </td>
-    <td>
-    {{ dish.dish_type }}
-    </td>
-  <td>
-    {{ dish.price }}
-    </td>
-  <td>
-    {{ dish.description }}
-    </td>
-
-  </tr>
-  {% endfor %}
-    </table>
-    </div>
-    </div>
-
-  {% else %}
-  <p> There are no dishes in restaurant</p>
-  {% endif %}
+      {% if dish_list %}
+        <table class="table table-bordered table-striped text-center table-hover" style="width: 75%;  margin: 0 auto;">
+          <tr style="background-color: seagreen">
+            <th style="vertical-align: middle;">ID</th>
+            <th style="vertical-align: middle;">Name</th>
+            <th style="vertical-align: middle;">Dish type</th>
+            <th style="vertical-align: middle;">Price</th>
+            <th style="vertical-align: middle;">Description</th>
+          </tr>
+          {% for dish in dish_list %}
+            <tr>
+              <td>{{ dish.id }}</td>
+              <td>
+                <a href="{% url 'kitchen:dish-detail' pk=dish.id %}" style="color: black;">{{ dish.name }}</a>
+              </td>
+              <td>{{ dish.dish_type }}</td>
+              <td>{{ dish.price }}</td>
+              <td>{{ dish.description }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+        </div>
+        </div>
+      {% else %}
+        <p> There are no dishes in restaurant</p>
+      {% endif %}
 {% endblock %}
