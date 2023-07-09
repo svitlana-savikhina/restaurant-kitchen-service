@@ -1,32 +1,38 @@
-{% extends "base.html" %}
+{% extends "base-fullscreen.html" %}
 {% load crispy_forms_filters %}
 
 {% block content %}
-
-  <h1>Dish types list
-  <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-success">
-            Create
-  </a>
-  </h1>
-
-  <br>
-
-  <div class="row align-items-center">
-    <form action="" method="get" class="d-flex">
-      <div class="col-8">
-        {{ search_form | crispy }}
-      </div>
-      <div>
-        <input class="btn btn-dark" type="submit" value="Search">
-      </div>
-      </form>
+  {% include "includes/navigation.html" %}
+  <div class="container text-center  mt-7">
+    <h1>Dish type List</h1>
+    <div class="container" style="display: flex; align-items: center; flex-direction: column;">
+      <h5 style="flex-grow: 1;">You can create a new dish</h5>
+      <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-success">
+        Create
+      </a>
+    </div>
   </div>
   <div class="container">
     <div class="row justify-content-center">
-
+      <div class="col-lg-6">
+        <form action="" method="get" class="row g-3 align-items-center">
+          <div class="col-8">
+            {{ search_form | crispy }}
+            <style>
+                input:focus {
+                    border-color: darkgreen !important;
+                    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+                }
+            </style>
+          </div>
+          <div class="col-4">
+            <input class="btn btn-dark" type="submit" value="search">
+          </div>
+        </form>
+      </div>
       {% if dish_type_list %}
-        <table class="table">
-        <tr>
+        <table class="table table-bordered table-striped text-center table-hover" style="width: 75%;  margin: 0 auto;"">
+        <tr style="background-color: seagreen">
           <th>ID</th>
           <th>Name</th>
           <th>Update</th>
@@ -36,14 +42,14 @@
           <tr>
             <td>{{ type.id }}</td>
             <td>{{ type.name }}</td>
-            <td><a href="{% url 'kitchen:dish-type-update' pk=type.id %}">Update</a></td>
-            <td><a href="{% url 'kitchen:dish-type-delete' pk=type.id %}">Delete</a></td>
+            <td><a style="color:seagreen" href="{% url 'kitchen:dish-type-update' pk=type.id %}">Update</a></td>
+            <td><a style="color:red" href="{% url 'kitchen:dish-type-delete' pk=type.id %}">Delete</a></td>
           </tr>
         {% endfor %}
         </table>
-        </div>
-        </div>
       {% else %}
         <p>There are no dish types in restaurant</p>
       {% endif %}
+    </div>
+  </div>
 {% endblock %}

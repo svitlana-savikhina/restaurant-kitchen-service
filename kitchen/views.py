@@ -159,5 +159,5 @@ class DishTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = DishType
-    template_name = "kitchen/dish-type_confirm_delete.html"
+    template_name = "kitchen/dish_type_confirm_delete.html"
     success_url = reverse_lazy("kitchen:dish-type-list")
