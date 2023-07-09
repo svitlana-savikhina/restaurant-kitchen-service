@@ -1,14 +1,27 @@
-{% extends "base.html" %}
+{% extends "base-fullscreen.html" %}
 {% load crispy_forms_filters %}
-
-
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} cook</h1>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input type="submit" value="Submit" class="btn btn-primary">
-  </form>
+   {% include "includes/navigation.html" %}
+
+  <div class="container text-center  mt-7">
+   <div class="row justify-content-center">
+   <div class="col-lg-6">
+    <h1>{{ object|yesno:"Update,Create" }} Cook</h1>
+    <form action="" method="post" novalidate>
+      {% csrf_token %}
+    {{ form | crispy }}
+      <style>
+      input:focus {
+          border-color: darkgreen !important;
+          box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+      }
+      </style>
+
+      <input type="submit" value="Submit" class="btn btn-dark">
+    </form>
+    </div>
+   </div>
+  </div>
 {% endblock %}
 
 
