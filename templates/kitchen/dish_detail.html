@@ -1,55 +1,57 @@
-{% extends "base.html" %}
+{% extends "base-fullscreen.html" %}
 
 {% block content %}
-  <div class="container mt-7">
-    <h1>{{ dish.name }}</h1>
-      <h2>({{ dish.dish_type.name }})</h2>
-   <br>
-      <div>
-        <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-success">
-        Update
-        </a>
-        <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger">
+   {% include "includes/navigation.html" %}
+   <div class="container mt-7">
+     <h1>{{ dish.name }}</h1>
+     <h2>({{ dish.dish_type.name }})</h2>
+     <br>
+     <div>
+       <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-success">
+          Update
+       </a>
+       <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger">
         Delete
-        </a>
-      </div>
-  <br>
+       </a>
+     </div>
+     <br>
      <h4>Description:</h4>
-    {{ dish.description }}
-   <br>
-   <br>
+     {{ dish.description }}
+     <br>
+     <br>
      <div class="ml-3">
        <h4>Cooks:</h4>
-      <table class="table">
-      <tr>
-        <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Years of experience</th>
-      </tr>
-      {% for cook_ in dish.cooks.all %}
-        <tr>
-          <td>{{ cook_.username }}</td>
-          <td>{{ cook_.first_name }}</td>
-          <td>{{ cook_.last_name }}</td>
-          <td>{{ cook_.years_of_experience }}</td>
-        </tr>
-  {% endfor %}
-    </table>
-     <br>
-     {% if user in dish.cooks.all %}
-  <form action="{% url 'kitchen:cook-assigning' pk=dish.id %}" method="post">
-  {% csrf_token %}
-  <input type="submit" value=" Delete me from this dish" class="btn btn-danger">
-  </form>
-     {% else %}
-       <form action="{% url 'kitchen:cook-assigning' pk=dish.id %}" method="post">
-         {% csrf_token %}
-         <input type="submit" value="Assign me to this dish" class="btn btn-success">
-        </form>
-     {% endif %}
+       <table class="table table-bordered table-striped text-center table-hover" style="width: 60%;  margin: 0;">
+         <tr style="background-color: slategrey">
+           <th>Username</th>
+           <th>First name</th>
+           <th>Last name</th>
+           <th>Years of experience</th>
+          </tr>
+         {% for cook_ in dish.cooks.all %}
+           <tr>
+             <td>{{ cook_.username }}</td>
+              <td>{{ cook_.first_name }}</td>
+              <td>{{ cook_.last_name }}</td>
+              <td>{{ cook_.years_of_experience }}</td>
+            </tr>
+         {% endfor %}
+       </table>
+       <br>
+       {% if user in dish.cooks.all %}
+         <form action="{% url 'kitchen:cook-assigning' pk=dish.id %}" method="post">
+           {% csrf_token %}
+           <input type="submit" value=" Delete me from this dish" class="btn btn-danger">
+         </form>
+       {% else %}
+         <form action="{% url 'kitchen:cook-assigning' pk=dish.id %}" method="post">
+           {% csrf_token %}
+           <input type="submit" value="Assign me to this dish" class="btn btn-success">
+         </form>
+       {% endif %}
      </div>
    </div>
 {% endblock %}
+
 
 
