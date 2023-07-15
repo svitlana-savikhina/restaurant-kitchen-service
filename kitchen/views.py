@@ -207,4 +207,3 @@ def register_user(request):
         form = SignUpForm()
 
     return render(request, "registration/register.html", {"form": form, "msg": msg, "success": success})
-
