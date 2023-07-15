@@ -10,16 +10,11 @@
       <form action="" method="post" novalidate>
         {% csrf_token %}
         {{ form|crispy }}
-        <style>
-            input:focus {
-                border-color: darkgreen !important;
-                box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
-            }
-        </style>
         <input type="submit" value="Submit" class="btn btn-dark">
       </form>
     </div>
    </div>
   </div>
 {% endblock %}
+
 
