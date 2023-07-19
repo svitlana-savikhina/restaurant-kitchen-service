@@ -17,19 +17,19 @@ cd restaurant-kitchen-service
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-Create .env file in root directory
-Write a SECRET_KEY inside .env file (example you can find in .env_sample )
 python manage.py migrate
 python manage.py runserver #starts Django Server
 ```
+Also, you should create .env file in root directory.
+Write a SECRET_KEY inside .env file (example you can find in .env_sample )
 ## Features
 * Authentication functionality for Cook/User
 * Managing cook, dishes and types of dishes directly from website interface 
 * Strong Django admin panel 
 
 ## Demo
-![website interface](register.png)
-![website interface](home_page.png)
+![website interface](img/register.png)
+![website interface](img/home_page.png)
 ![website interface](cook_list_page.png)
-![website interface](dish_list_page.png)
-![website interface](dish_type_list_page.png)
+![website interface](img/dish_list_page.png)
+![website interface](img/dish_type_list_page.png)
