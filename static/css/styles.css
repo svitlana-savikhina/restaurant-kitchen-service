@@ -1,10 +1,10 @@
 h5 {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 input:focus {
-          border-color: darkgreen !important;
-          box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+    border-color: darkgreen !important;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
 }
 
 .table.table-bordered.table-striped.text-center.table-hover {
@@ -22,12 +22,12 @@ input:focus {
 }
 
 .container.additional-class {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 
 th {
-  vertical-align: middle;
+    vertical-align: middle;
 }

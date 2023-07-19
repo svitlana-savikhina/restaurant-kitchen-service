@@ -4,9 +4,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.models import Cook, DishType, Dish
 from kitchen.forms import CookCreateForm, CookUpdateForm, DishForm, CookSearchForm, DishSearchForm, DishTypeSearchForm, \
     SignUpForm, LoginForm
+from kitchen.models import Cook, DishType, Dish
 
 
 def index(request):

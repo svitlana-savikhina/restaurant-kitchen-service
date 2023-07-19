@@ -69,3 +69,4 @@ class PrivateDishTypeTest(BaseTestCase):
             list(dish_types)
         )
         self.assertTemplateUsed(response, "kitchen/dish_type_list.html")
+

@@ -5,6 +5,9 @@ Using this project you can create, update and delete cooks, dishes and types of 
 ## Check it out!
 [Restaurant Kitchen Service project deployed to Render](link)
 
+* login: admin
+* password: FGh12j33
+
 ## Instalanion
 Python3 must be already installed
 
@@ -14,6 +17,8 @@ cd restaurant-kitchen-service
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+Create .env file in root directory
+Write a SECRET_KEY inside .env file (example you can find in .env_sample )
 python manage.py runserver #starts Django Server
 ```
 ## Features

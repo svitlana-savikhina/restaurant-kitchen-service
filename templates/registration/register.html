@@ -5,7 +5,7 @@
 <!-- Specific CSS goes HERE -->
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% endblock stylesheets %}
 
 {% block body_class %} sign-in-illustration {% endblock body_class %}
@@ -24,10 +24,10 @@
                 <h4 class="font-weight-bolder">Sign UP</h4>
                 <p class="mb-0">
                   {% if msg %}
-                      {{ msg | safe }}
+                    {{ msg | safe }}
                   {% else %}
-                      Add your credentials
-                  {% endif %}                
+                    Add your credentials
+                  {% endif %}
                 </p>
               </div>
               <div class="card-body">
@@ -35,7 +35,7 @@
                   {% csrf_token %}
                   <div class="mb-3">
                     {{ form.username }}
-                  </div>                
+                  </div>
 
                   <span class="text-error">{{ form.username.errors }}</span>
                   <div class="mb-3">
@@ -61,7 +61,8 @@
                   </div>
                   <div class="text-center">
                     <button type="submit" name="register"
-                            class="btn btn-lg bg-success font-weight-bold text-dark btn-lg w-100 mt-4 mb-0">Register</button>
+                            class="btn btn-lg bg-success font-weight-bold text-dark btn-lg w-100 mt-4 mb-0">Register
+                    </button>
                   </div>
                 </form>
               </div>
@@ -73,8 +74,10 @@
               </div>
             </div>
           </div>
-          <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-            <div class="position-relative bg-success h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center">
+          <div
+              class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
+            <div
+                class="position-relative bg-success h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center">
 
               <div class="position-relative">
                 <img class="max-width-500 w-100 position-relative z-index-2" src="{{ ASSETS_ROOT }}/img/48-1.jpg">
@@ -83,7 +86,9 @@
                 Restaurant Kitchen Service
               </h4>
               <p class="text-white">
-                &copy; Coded by <a class="text-white" target="_blank" href="https://github.com/svitlana-savikhina?tab=repositoriesv" target="_blank">Svitlana Savikhina</a>
+                &copy; Coded by <a class="text-white" target="_blank"
+                                   href="https://github.com/svitlana-savikhina?tab=repositoriesv" target="_blank">Svitlana
+                Savikhina</a>
               </p>
             </div>
           </div>
@@ -94,7 +99,7 @@
 
 {% endblock content %}
 
-<!-- Specific JS goes HERE --> 
+<!-- Specific JS goes HERE -->
 {% block javascripts %}
 
   <script src="{{ ASSETS_ROOT }}/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>

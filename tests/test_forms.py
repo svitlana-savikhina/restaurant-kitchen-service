@@ -63,3 +63,4 @@ class SearchFormTest(TestCase):
         self.assertEqual(
             list(queryset),
             list(expected_queryset))
+

@@ -30,3 +30,4 @@ class ModelsTests(TestCase):
         dish_type = DishType.objects.create(name="Main")
         name = Dish.objects.create(name="test", price=10.99, dish_type=dish_type)
         self.assertEqual(str(name), name.name)
+
