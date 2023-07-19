@@ -19,6 +19,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 Create .env file in root directory
 Write a SECRET_KEY inside .env file (example you can find in .env_sample )
+python manage.py migrate
 python manage.py runserver #starts Django Server
 ```
 ## Features
