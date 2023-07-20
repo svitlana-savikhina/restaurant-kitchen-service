@@ -5,7 +5,7 @@ Using this project you can create, update and delete cooks, dishes and types of 
 ## Check it out!
 [Restaurant Kitchen Service project deployed to Render](link)
 
-* login: admin
+* login: test.admin
 * password: FGh12j33
 
 ## Instalanion

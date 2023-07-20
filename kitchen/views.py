@@ -3,28 +3,27 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
+from django.views.generic import TemplateView
 
 from kitchen.forms import CookCreateForm, CookUpdateForm, DishForm, CookSearchForm, DishSearchForm, DishTypeSearchForm, \
     SignUpForm, LoginForm
 from kitchen.models import Cook, DishType, Dish
 
 
-def index(request):
-    num_cooks = Cook.objects.count()
-    num_dishes = Dish.objects.count()
-    num_dish_type = DishType.objects.count()
+class IndexView(TemplateView):
+    template_name = "kitchen/index.html"
 
-    num_visits = request.session.get("num_visits", 0)
-    request.session["num_visits"] = num_visits + 1
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["num_cooks"] = Cook.objects.count()
+        context["num_dishes"] = Dish.objects.count()
+        context["num_dish_type"] = DishType.objects.count()
 
-    context = {
-        "num_cooks": num_cooks,
-        "num_dishes": num_dishes,
-        "num_dish_type": num_dish_type,
-        "num_visits": num_visits + 1,
-    }
+        num_visits = self.request.session.get("num_visits", 0)
+        self.request.session["num_visits"] = num_visits + 1
+        context["num_visits"] = num_visits + 1
 
-    return render(request, "kitchen/index.html", context=context)
+        return context
 
 
 class CookListView(LoginRequiredMixin, generic.ListView):
@@ -171,6 +170,7 @@ def login_view(request):
     msg = None
 
     if request.method == "POST":
+
         if form.is_valid():
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
