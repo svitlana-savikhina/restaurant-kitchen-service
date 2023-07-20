@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.views import generic
+from django.views import generic, View
 from django.views.generic import TemplateView
 
 from kitchen.forms import CookCreateForm, CookUpdateForm, DishForm, CookSearchForm, DishSearchForm, DishTypeSearchForm, \
@@ -164,12 +164,16 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("kitchen:dish-type-list")
 
 
-def login_view(request):
-    form = LoginForm(request.POST or None)
+class LoginView(View):
+    template_name = "registration/login.html"
 
-    msg = None
+    def get(self, request):
+        form = LoginForm()
+        return render(request, self.template_name, {"form": form})
 
-    if request.method == "POST":
+    def post(self, request):
+        form = LoginForm(request.POST)
+        msg = None
 
         if form.is_valid():
             username = form.cleaned_data.get("username")
@@ -183,15 +187,21 @@ def login_view(request):
         else:
             msg = 'Error validating the form'
 
-    return render(request, "registration/login.html", {"form": form, "msg": msg})
+        return render(request, "registration/login.html", {"form": form, "msg": msg})
 
 
-def register_user(request):
-    msg = None
-    success = False
+class RegisterUserView(View):
+    template_name = "registration/register.html"
 
-    if request.method == "POST":
+    def get(self, request):
+        form = SignUpForm()
+        return render(request, self.template_name, {"form": form, "msg": None, "success": False})
+
+    def post(self, request):
         form = SignUpForm(request.POST)
+        msg = None
+        success = False
+
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")
@@ -203,7 +213,5 @@ def register_user(request):
 
         else:
             msg = 'Form is not valid'
-    else:
-        form = SignUpForm()
 
-    return render(request, "registration/register.html", {"form": form, "msg": msg, "success": success})
+        return render(request, "registration/register.html", {"form": form, "msg": msg, "success": success})
