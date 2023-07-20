@@ -3,12 +3,12 @@ Django project for kitchen management in a restaurant.
 Using this project you can create, update and delete cooks, dishes and types of dishes
 
 ## Check it out!
-[Restaurant Kitchen Service project deployed to Render](link)
+[Restaurant Kitchen Service project deployed to Render](https://restaurant-kitchen-service-igb6.onrender.com/accounts/login/)
 
 * login: test.admin
 * password: FGh12j33
 
-## Instalanion
+## Installation
 Python3 must be already installed
 
 ```shell
@@ -20,7 +20,9 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver #starts Django Server
 ```
-Also, you should create .env file in root directory.
+* Install the dj-database-url module, which provides a convenient way 
+to use environment variables for database configuration.
+* Also, you should create .env file in root directory.
 Write a SECRET_KEY inside .env file (example you can find in .env_sample )
 ## Features
 * Authentication functionality for Cook/User
