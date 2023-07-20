@@ -1,0 +1,33 @@
+h5 {
+    flex-grow: 1;
+}
+
+input:focus {
+    border-color: darkgreen !important;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+}
+
+.table.table-bordered.table-striped.text-center.table-hover {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.table.table-bordered.table-striped.text-center.table-hover.additional-class {
+    width: 60%;
+    margin: 0;
+}
+
+.table tr:first-child {
+    background-color: seagreen;
+}
+
+.container.additional-class {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+th {
+    vertical-align: middle;
+}

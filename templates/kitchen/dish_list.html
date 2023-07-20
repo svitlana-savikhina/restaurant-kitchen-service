@@ -1,0 +1,54 @@
+{% extends "base-fullscreen.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  {% include "includes/navigation.html" %}
+  <div class="container text-center  mt-7">
+    <h1>Dish List</h1>
+    <div class="container">
+      <h5>You can create a new dish</h5>
+      <a href="{% url 'kitchen:dish-create' %}" class="btn btn-success">
+        Create
+      </a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form action="" method="get" class="row g-3 align-items-center">
+          <div class="col-8">
+            {{ search_form | crispy }}
+          </div>
+          <div class="col-4">
+            <input class="btn btn-dark" type="submit" value="search">
+          </div>
+        </form>
+      </div>
+      {% if dish_list %}
+        <table class="table table-bordered table-striped text-center table-hover">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Dish type</th>
+            <th>Price</th>
+            <th>Description</th>
+          </tr>
+          {% for dish in dish_list %}
+            <tr>
+              <td>{{ dish.id }}</td>
+              <td>
+                <a href="{% url 'kitchen:dish-detail' pk=dish.id %}" style="color: black;">{{ dish.name }}</a>
+              </td>
+              <td>{{ dish.dish_type }}</td>
+              <td>{{ dish.price }}</td>
+              <td>{{ dish.description }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+        </div>
+        </div>
+      {% else %}
+        <p> There are no dishes in restaurant</p>
+      {% endif %}
+{% endblock %}
+
