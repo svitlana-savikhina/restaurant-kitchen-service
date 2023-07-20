@@ -20,7 +20,9 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver #starts Django Server
 ```
-Also, you should create .env file in root directory.
+* Install the dj-database-url module, which provides a convenient way 
+to use environment variables for database configuration.
+* Also, you should create .env file in root directory.
 Write a SECRET_KEY inside .env file (example you can find in .env_sample )
 ## Features
 * Authentication functionality for Cook/User
