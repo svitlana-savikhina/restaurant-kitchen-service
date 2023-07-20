@@ -3,7 +3,7 @@ Django project for kitchen management in a restaurant.
 Using this project you can create, update and delete cooks, dishes and types of dishes
 
 ## Check it out!
-[Restaurant Kitchen Service project deployed to Render](link)
+[Restaurant Kitchen Service project deployed to Render](https://restaurant-kitchen-service-igb6.onrender.com/accounts/login/)
 
 * login: test.admin
 * password: FGh12j33
