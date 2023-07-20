@@ -8,7 +8,7 @@ Using this project you can create, update and delete cooks, dishes and types of 
 * login: test.admin
 * password: FGh12j33
 
-## Instalanion
+## Installation
 Python3 must be already installed
 
 ```shell
